@@ -195,6 +195,10 @@ img {
   outline: none;
 }
 
+.btn:disabled {
+  opacity: 0.65;
+}
+
 .btn-link {
   background: none;
   padding: 0;
