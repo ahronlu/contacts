@@ -335,6 +335,10 @@ button:active {
   box-shadow: none;
 }
 
+span[role="alert"] {
+  color: --danger-color;
+}
+
 .form-group {
   margin: 1.2rem 0;
 }
