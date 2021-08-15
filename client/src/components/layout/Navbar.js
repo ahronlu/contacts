@@ -13,8 +13,9 @@ const Navbar = ({ title, icon }) => {
   const { clearContacts } = contactContext;
 
   useEffect(() => {
-    loadUser();
-    setLoading(false);
+    loadUser().then(() => {
+      setLoading(false);
+    });
     // eslint-disable-next-line
   }, []);
 
