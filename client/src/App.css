@@ -195,7 +195,8 @@ img {
   outline: none;
 }
 
-.btn:disabled {
+.btn:disabled,
+.btn:disabled:hover {
   opacity: 0.65;
 }
 
