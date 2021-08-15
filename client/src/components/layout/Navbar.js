@@ -1,10 +1,11 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import ContactContext from '../../context/contact/contactContext';
 
 const Navbar = ({ title, icon }) => {
+  const [loading, setLoading] = useState(false)
   const authContext = useContext(AuthContext);
   const contactContext = useContext(ContactContext);
 
@@ -13,6 +14,7 @@ const Navbar = ({ title, icon }) => {
 
   useEffect(() => {
     loadUser();
+    setLoading(false);
     // eslint-disable-next-line
   }, []);
 
@@ -51,7 +53,7 @@ const Navbar = ({ title, icon }) => {
           <i className={icon} /> <span className='hide-sm'>{title}</span>
         </Link>
       </h1>
-      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+      <ul>{!loading && isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );
 };
