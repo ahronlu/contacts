@@ -5,7 +5,8 @@ import AuthContext from '../../context/auth/authContext';
 import ContactContext from '../../context/contact/contactContext';
 
 const Navbar = ({ title, icon }) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true);
+  
   const authContext = useContext(AuthContext);
   const contactContext = useContext(ContactContext);
 
