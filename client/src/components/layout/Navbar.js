@@ -37,7 +37,7 @@ const Navbar = ({ title, icon }) => {
     </Fragment>
   );
 
-  const guestLinks = (
+  const guestLinks = !loading && (
     <Fragment>
       <li>
         <Link to='/register'>Register</Link>
@@ -55,7 +55,7 @@ const Navbar = ({ title, icon }) => {
           <i className={icon} /> <span className='hide-sm'>{title}</span>
         </Link>
       </h1>
-      <ul>{!loading && isAuthenticated ? authLinks : guestLinks}</ul>
+      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );
 };
