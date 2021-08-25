@@ -10,21 +10,28 @@ const ContactForm = ({ setShowFormModal }) => {
     handleSubmit,
     setValue,
     formState: { errors, isSubmitting, isValid, dirtyFields },
-    watch,
   } = useForm({
     mode: "onChange",
   });
 
   const { addContact, updateContact, clearCurrent, current } = contactContext;
 
-  const fields = ["name", "company", "address", "email", "phone", "_id"];
+  const fields = [
+    "name",
+    "company",
+    "address",
+    "email",
+    "phone",
+    "type",
+    "_id",
+  ];
 
   useEffect(() => {
     if (current !== null) {
       console.log(current);
       fields.map((f) => setValue(f, current[f]));
     }
-  }, [contactContext, current]);
+  }, [contactContext, current, fields, setValue]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -95,24 +102,20 @@ const ContactForm = ({ setShowFormModal }) => {
       />
       {errors.phone && <span role="alert">{errors.phone.message}</span>}
       <h3 style={{ textAlign: "left" }}>Contact Type</h3>
-      {/* <input
+      <input
         type="radio"
-        name="type"
         id="personal"
         value="personal"
-        checked={type === "personal"}
-        onChange={onChange}
+        {...register("type", { required: true })}
       />{" "}
       <label htmlFor="personal">Personal</label>{" "}
       <input
         type="radio"
-        name="type"
         id="professional"
         value="professional"
-        checked={type === "professional"}
-        onChange={onChange}
+        {...register("type", { required: true })}
       />{" "}
-      <label htmlFor="professional">Professional</label> */}
+      <label htmlFor="professional">Professional</label>
       <div>
         <input
           disabled={!isValid || isSubmitting}
