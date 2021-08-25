@@ -33,7 +33,6 @@ const ContactItem = ({ contact, setShowFormModal }) => {
             <i className="fas fa-briefcase" /> {company}
           </li>
         )}
-
         {address && (
           <li>
             <i className="fas fa-map-marker-alt" />{" "}
