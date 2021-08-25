@@ -19,7 +19,7 @@ const App = () => {
       <ContactState>
         <AlertState>
           <Router>
-            <>
+            <React.Fragment>
               <Navbar />
               <div className="container">
                 <Alerts />
@@ -30,7 +30,7 @@ const App = () => {
                   <Route exact path="/login" component={Login} />
                 </Switch>
               </div>
-            </>
+            </React.Fragment>
           </Router>
         </AlertState>
       </ContactState>
