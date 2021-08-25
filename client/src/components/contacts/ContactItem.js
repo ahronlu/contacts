@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import ContactContext from '../../context/contact/contactContext';
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
+import ContactContext from "../../context/contact/contactContext";
 
 const ContactItem = ({ contact, setShowFormModal }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
 
-  const { _id, name,nickname, company, birthdate, address, email, phone, type } = contact;
+  const { _id, name, company, address, email, phone, type } = contact;
 
   const onDelete = () => {
     deleteContact(_id);
@@ -14,63 +14,61 @@ const ContactItem = ({ contact, setShowFormModal }) => {
   };
 
   return (
-    <div className='card bg-light'>
-      <h3 className='text-left'>
-        {name}{' '}
+    <div className="card bg-light">
+      <h3 className="text-left">
+        {name}{" "}
         <span
-          style={{ float: 'right' }}
+          style={{ float: "right" }}
           className={
-            'badge ' +
-            (type === 'professional' ? 'badge-success' : 'badge-primary')
+            "badge " +
+            (type === "professional" ? "badge-success" : "badge-primary")
           }
         >
           {type.charAt(0).toUpperCase() + type.slice(1)}
         </span>
       </h3>
-      <ul className='list'>
-        {nickname && (
-          <li>
-            <i className='fas fa-user' /> {nickname}
-          </li>
-        )}
+      <ul className="list">
         {company && (
           <li>
-            <i className='fas fa-briefcase' /> {company}
+            <i className="fas fa-briefcase" /> {company}
           </li>
         )}
-        {birthdate && (
-          <li>
-            <i className='fa fa-birthday-cake' />{birthdate}
-          </li>
-        )}
+
         {address && (
           <li>
-            <i className='fas fa-map-marker-alt' /> <a target="_blank" rel="noopener noreferrer" href={`https://maps.google.com/?q=${address}`}>{address}</a>
+            <i className="fas fa-map-marker-alt" />{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://maps.google.com/?q=${address}`}
+            >
+              {address}
+            </a>
           </li>
         )}
         {email && (
           <li>
-            <i className='fas fa-envelope-open' /> <a href={`mailto:${email}`}>{email}</a>
+            <i className="fas fa-envelope-open" />{" "}
+            <a href={`mailto:${email}`}>{email}</a>
           </li>
         )}
         {phone && (
           <li>
-            <i className='fas fa-phone' /> <a href={`tel:${phone}`}>{phone}</a>
+            <i className="fas fa-phone" /> <a href={`tel:${phone}`}>{phone}</a>
           </li>
         )}
       </ul>
       <p>
         <button
-          className='btn btn-dark btn-sm'
+          className="btn btn-dark btn-sm"
           onClick={() => {
-            setShowFormModal(true)
-            setCurrent(contact)
-            }
-          }
+            setShowFormModal(true);
+            setCurrent(contact);
+          }}
         >
           Edit
         </button>
-        <button className='btn btn-danger btn-sm' onClick={onDelete}>
+        <button className="btn btn-danger btn-sm" onClick={onDelete}>
           Delete
         </button>
       </p>
@@ -79,7 +77,7 @@ const ContactItem = ({ contact, setShowFormModal }) => {
 };
 
 ContactItem.propTypes = {
-  contact: PropTypes.object.isRequired
+  contact: PropTypes.object.isRequired,
 };
 
 export default ContactItem;

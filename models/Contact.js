@@ -1,26 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ContactSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users'
+    ref: "users",
   },
   name: {
     type: String,
     required: true,
-    trim: true
-  },
-  nickname: {
-    type: String,
-    trim: true
+    trim: true,
   },
   company: {
     type: String,
-    trim: true
-  },
-  birthdate: {
-    type: Date,
-    trim: true
+    trim: true,
   },
   address: {
     type: String,
@@ -29,21 +21,21 @@ const ContactSchema = mongoose.Schema({
   email: {
     type: String,
     trim: true,
-    lowercase: true
+    lowercase: true,
   },
   phone: {
     type: String,
-    trim: true
+    trim: true,
   },
   type: {
     type: String,
-    default: 'personal',
-    trim: true
+    default: "personal",
+    trim: true,
   },
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('contact', ContactSchema);
+module.exports = mongoose.model("contact", ContactSchema);
