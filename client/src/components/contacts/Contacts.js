@@ -1,8 +1,8 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import ContactItem from './ContactItem';
-import Spinner from '../layout/Spinner';
-import ContactContext from '../../context/contact/contactContext';
+import { Fragment, useContext, useEffect } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import ContactItem from "./ContactItem";
+import Spinner from "../layout/Spinner";
+import ContactContext from "../../context/contact/contactContext";
 
 const Contacts = ({ setShowFormModal }) => {
   const contactContext = useContext(ContactContext);
@@ -23,22 +23,28 @@ const Contacts = ({ setShowFormModal }) => {
       {contacts !== null && !loading ? (
         <TransitionGroup>
           {filtered !== null
-            ? filtered.map(contact => (
+            ? filtered.map((contact) => (
                 <CSSTransition
                   key={contact._id}
                   timeout={500}
-                  classNames='item'
+                  classNames="item"
                 >
-                  <ContactItem contact={contact} setShowFormModal={setShowFormModal} />
+                  <ContactItem
+                    contact={contact}
+                    setShowFormModal={setShowFormModal}
+                  />
                 </CSSTransition>
               ))
-            : contacts.map(contact => (
+            : contacts.map((contact) => (
                 <CSSTransition
                   key={contact._id}
                   timeout={500}
-                  classNames='item'
+                  classNames="item"
                 >
-                  <ContactItem contact={contact} setShowFormModal={setShowFormModal} />
+                  <ContactItem
+                    contact={contact}
+                    setShowFormModal={setShowFormModal}
+                  />
                 </CSSTransition>
               ))}
         </TransitionGroup>
